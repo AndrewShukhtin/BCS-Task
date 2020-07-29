@@ -44,10 +44,11 @@ contract BaumanToken is ERC20Detailed, ERC20, Ownable {
 
   //
   // NOTE: Функция позволяет сжигать токены с указанного аккаунта
-  // только владельцу смарт-контракта.
+  // только владельцу смарт-контракта. Однако у данной функции есть проблемы,
+  // как у функции описанной в стандарте, хотя она и соответсвует требованиям ТЗ.
   //
   function burnFrom(address account, uint256 amount) public onlyOwner {
-    _burnFrom(account, amount);
+    _burn(account, amount);
   }
 
   //
@@ -65,7 +66,7 @@ contract BaumanToken is ERC20Detailed, ERC20, Ownable {
   // Полное описание функции см. https://docs.openzeppelin.com/contracts/2.x/api/token/erc20
   //
   function transferFrom(address sender, address recipient, uint256 amount) public onlyOwner returns (bool) {
-    return super.transferFrom(sender, sender, amount);
+    return super.transferFrom(sender, recipient, amount);
   }
 
   //
