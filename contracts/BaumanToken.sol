@@ -29,6 +29,9 @@ contract BaumanToken is ERC20Detailed, ERC20, Ownable {
 
     // NOTE: Изначальная эмиссия токенов -- любая.
     _initialSupply = 0;
+
+    // NOTE: Выпускаем токены и передаем их вдальцу смарт-контракта.
+    _mint(owner, _initialSupply);
   }
 
   //

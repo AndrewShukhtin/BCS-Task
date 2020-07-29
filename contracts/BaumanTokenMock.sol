@@ -21,6 +21,8 @@ contract BaumanTokenMock is ERC20Detailed, ERC20, Ownable {
     _transferOwnership(owner);
 
     _initialSupply = 0;
+
+    _mint(owner, _initialSupply);
   }
 
   function burn(uint256 amount) public {
